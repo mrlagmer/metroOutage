@@ -20,7 +20,7 @@ export function requestPosts() {
 export function receivePosts(json) {
   return {
     type: RECEIVE_POSTS,
-    posts: json.metro.map(child => child.data),
+    posts: json.metro.map(child => child),
     receivedAt: Date.now()
   }
 }
