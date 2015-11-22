@@ -3,11 +3,14 @@ import React, { PropTypes, Component } from 'react'
 export default class OutageList extends Component {
   render() {
     return(
-      <ul>
+      <dl>
           {this.props.posts.map((post, i) =>
-            <li key={i}>{post.title}</li>
+            <div key={i}>
+            <dt>{post.title}</dt>
+            <dd className="callout secondary">{post.description}</dd>
+            </div>
           )}
-      </ul>
+      </dl>
     )
   }
 };

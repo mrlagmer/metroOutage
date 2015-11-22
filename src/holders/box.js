@@ -15,9 +15,13 @@ class Box extends Component {
   render() {
     const {  posts, isFetching, lastUpdated } = this.props
     return (
-      <div className="commentBox">
+      <div className="commentBox row">
+        <div className="callout large">
+        <div className="row column text-center">
         <h1>Metro Trains Outage Info</h1>
-        <p>Info comes from the <a href="https://www.data.vic.gov.au/data/dataset/ptv-timetable-api">ptv api</a></p>
+        </div>
+        </div>
+        <hr />
         <OutageList posts={posts} />
       </div>
     );
