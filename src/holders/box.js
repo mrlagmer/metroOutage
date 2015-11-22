@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { receivePosts, requestPosts, invalidateData, fetchPosts } from '../state/outage'
 import OutageList from '../components/outageList'
+import Loading from '../components/loading'
 
 class Box extends Component {
   constructor(props) {
@@ -22,7 +23,12 @@ class Box extends Component {
         </div>
         </div>
         <hr />
-        <OutageList posts={posts} />
+        {isFetching &&
+          <Loading />
+        }
+        {posts.length > 0 &&
+          <OutageList posts={posts} />
+        }
       </div>
     );
   }
