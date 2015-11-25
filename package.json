@@ -28,7 +28,8 @@
     "react-hot-loader": "^1.3.0"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "author": "Stuart Mitchell",
   "license": "ISC"

@@ -44,7 +44,7 @@ export function fetchPosts() {
     // In this case, we return a promise to wait for.
     // This is not required by thunk middleware, but it is convenient for us.
 
-    return fetch(`http://localhost/at2/app/api/testAPI.php`)
+    return fetch(`../api/testAPI.php`)
       .then(response => response.json())
       .then(json =>
 
