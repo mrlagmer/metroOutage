@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react'
 export default class OutageList extends Component {
   render() {
     return(
+      <div className="small-12 columns">
       <dl>
           {this.props.posts.map((post, i) =>
             <div key={i}>
@@ -11,6 +12,7 @@ export default class OutageList extends Component {
             </div>
           )}
       </dl>
+      </div>
     )
   }
 };
