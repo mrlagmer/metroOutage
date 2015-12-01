@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { receivePosts, requestPosts, invalidateData, fetchPosts, filter } from '../state/outage'
+import { receivePosts, requestPosts, invalidateData, fetchPosts, filterList } from '../state/outage'
 import OutageList from '../components/outageList'
 import Loading from '../components/loading'
 import Search from '../components/search'
@@ -13,7 +13,7 @@ class Box extends Component {
 
   handleFilter(e) {
     const { dispatch } = this.props
-    dispatch(filter(e.target.value))
+    dispatch(filterList(e.target.value))
   }
 
   componentDidMount() {

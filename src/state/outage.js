@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import { combineReducers } from 'redux'
 
-export const FILTER = 'FILTER'
+export const FILTER_POSTS = 'FILTER_POSTS'
 export const INVALIDATE_DATA = 'INVALIDATE_DATA'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
@@ -12,10 +12,10 @@ export function invalidateData() {
   }
 }
 
-export function filter(filter) {
+export function filterList(filterData) {
   return {
-    type: FILTER,
-    filter
+    type: FILTER_POSTS,
+    filterData
   }
 }
 
@@ -69,9 +69,9 @@ export function fetchPosts() {
 
 function filterData(state =[],action) {
   switch (action.type) {
-    case FILTER:
+    case FILTER_POSTS:
       return Object.assign({}, state, {
-        filter: action.filter
+        filterData: action.filterData
       })
     default:
       return state
