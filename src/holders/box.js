@@ -1,12 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { receivePosts, requestPosts, invalidateData, fetchPosts } from '../state/outage'
+import { receivePosts, requestPosts, invalidateData, fetchPosts, filter } from '../state/outage'
 import OutageList from '../components/outageList'
 import Loading from '../components/loading'
+import Search from '../components/search'
 
 class Box extends Component {
   constructor(props) {
     super(props)
+    this.handleFilter = this.handleFilter.bind(this)
+  }
+
+  handleFilter(e) {
+    const { dispatch } = this.props
+    dispatch(filter(e.target.value))
   }
 
   componentDidMount() {
@@ -22,6 +29,7 @@ class Box extends Component {
         <h1>Metro Trains Outage Info</h1>
         </div>
         </div>
+        <Search handleFilter={this.handleFilter} />
         <hr />
         {isFetching &&
           <Loading />
@@ -45,8 +53,8 @@ function mapStateToProps(state) {
 
 
   return {
-    posts: state.items,
-    isFetching: state.isFetching
+    posts: state.posts.items,
+    isFetching: state.posts.isFetching
   }
 }
 

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
-import posts from './outage'
+import rootReducer from './outage'
 
 const loggerMiddleware = createLogger()
 
@@ -11,5 +11,5 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore)
 
 export default function configureStore(initialState) {
-  return createStoreWithMiddleware(posts, initialState)
+  return createStoreWithMiddleware(rootReducer, initialState)
 }

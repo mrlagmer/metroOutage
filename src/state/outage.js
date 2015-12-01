@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
+import { combineReducers } from 'redux'
 
-
+export const FILTER = 'FILTER'
 export const INVALIDATE_DATA = 'INVALIDATE_DATA'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
@@ -8,6 +9,13 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export function invalidateData() {
   return {
     type: INVALIDATE_DATA,
+  }
+}
+
+export function filter(filter) {
+  return {
+    type: FILTER,
+    filter
   }
 }
 
@@ -44,7 +52,7 @@ export function fetchPosts() {
     // In this case, we return a promise to wait for.
     // This is not required by thunk middleware, but it is convenient for us.
 
-    return fetch(`../api/testAPI.php`)
+    return fetch(`http://localhost/metroOutage/src/api/testAPI.php`)
       .then(response => response.json())
       .then(json =>
 
@@ -59,7 +67,18 @@ export function fetchPosts() {
   }
 }
 
-export default function posts(state = {
+function filterData(state =[],action) {
+  switch (action.type) {
+    case FILTER:
+      return Object.assign({}, state, {
+        filter: action.filter
+      })
+    default:
+      return state
+  }
+}
+
+function posts(state = {
   isFetching: false,
   didInvalidate: false,
   items: []
@@ -85,3 +104,10 @@ export default function posts(state = {
     return state
   }
 }
+
+const rootReducer = combineReducers({
+  filterData,
+  posts
+})
+
+export default rootReducer
