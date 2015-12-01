@@ -49,11 +49,20 @@ Box.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
+function filterItems(posts, filterData) {
+  if(filterData.filterData) {
+    return posts.filter(function(p){
+      if(p.title == filterData.filterData) {
+        return p
+      }
+    })
+  }
+  return posts
+}
+
 function mapStateToProps(state) {
-
-
   return {
-    posts: state.posts.items,
+    posts: filterItems(state.posts.items,state.filterData),
     isFetching: state.posts.isFetching
   }
 }
