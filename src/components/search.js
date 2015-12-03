@@ -5,8 +5,7 @@ export default class Search extends Component {
     return(
       <form>
       <div className="input-group">
-        <input className="input-group-field" type="search" onKeyUp={this.props.handleFilter} />
-        <a className="input-group-button button">Filter</a>
+        <input className="input-group-field" type="search" placeholder="Filter List..." onKeyUp={this.props.handleFilter} />
       </div>
       </form>
     )

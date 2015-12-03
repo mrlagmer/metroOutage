@@ -50,9 +50,10 @@ Box.propTypes = {
 }
 
 function filterItems(posts, filterData) {
+  var re = new RegExp( filterData.filterData, "ig" );
   if(filterData.filterData) {
     return posts.filter(function(p){
-      if(p.title == filterData.filterData) {
+      if(re.exec(p.title)) {
         return p
       }
     })
